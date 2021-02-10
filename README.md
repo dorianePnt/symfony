@@ -211,17 +211,18 @@ https://prod.liveshare.vsengsaas.visualstudio.com/join?B7391B28D873700375CA86460
     => IL VA FALLOIR LE RAJOUTER
 
     VERIFIER QUE LA PAGE D'ACCUEIL S'AFFICHE CORRECTEMENT
-    http://symfony.test/public/   ou
-    http://localhost/symfony/public/
+    http://localhost:8888/symfony/public/
 
 
     POUR LA CONFIGURATION DE NOTRE PROJET, ON AURA AUSSI BESOIN DE TRAVAILLER
     AVEC LE DOSSIER config/
     AVEC LE FICHIER .env
 
+
 ## INSTALLATION DU .htaccess POUR APACHE
 
     https://symfony.com/doc/current/setup/web_server_configuration.html#adding-rewrite-rules
+
 
     OUVRIR UN TERMINAL DANS LE DOSSIER symfony/
 
@@ -235,6 +236,7 @@ https://prod.liveshare.vsengsaas.visualstudio.com/join?B7391B28D873700375CA86460
 
     => SI ON RAFRAICHIT LA PAGE D'ACCUEIL DANS LE NAVIGATEUR
         ON DOIT VOIR LE BANDEAU DU PROFILE EN BAS DE PAGE...
+
 
 ## ACTIVER GIT AVEC SYMFONY
 
@@ -253,8 +255,102 @@ https://prod.liveshare.vsengsaas.visualstudio.com/join?B7391B28D873700375CA86460
     git config user.name "votre nom ici"
     git config user.email "votre.email@ici"
 
+
+
+    PAUSE DEJEUNER ET REPRISE A 14H15...
+
 ## CREER SA PREMIERE PAGE AVEC SYMFONY
 
     https://symfony.com/doc/current/page_creation.html
 
+
     https://symfony.com/doc/current/page_creation.html#annotation-routes
+
+
+## CREER SON CONTROLLER AVEC LA CONSOLE
+
+    * DOCUMENTATION EN FRANCAIS 
+    https://symfony.com/doc/5.0/the-fast-track/fr/6-controller.html#generating-a-controller
+
+    * EN ANGLAIS
+    https://symfony.com/doc/current/the-fast-track/en/6-controller.html#generating-a-controller
+
+
+    OUVRIR UN TERMINAL DANS LE DOSSIER symfony/
+
+    php bin/console make:controller
+
+    ET DONNER LE NOM DE LA CLASSE (SANS LE SUFFIXE Controller)
+
+    Choose a name for your controller class (e.g. GentleElephantController):
+    > First
+
+    created: src/Controller/FirstController.php
+    created: templates/first/index.html.twig
+
+    => ON OBTIENT 2 NOUVEAUX FICHIERS...
+
+    PAUSE ET REPRISE A 16H...
+
+
+## RECAP SUR L'INSTALLATION DE SYMFONY
+
+    --- CHECK SERVEUR ---
+
+    * VERIFIER VOTRE SERVEUR WEB
+    => PHP8
+
+    * INSTALLER LE CODE DE SYMFONY
+    * ON UTILISE composer
+        => INSTALLER composer
+
+    INSTALLER git
+        => INSTALLER git-scm
+
+        https://git-scm.com/downloads
+
+        git config user.name "votre nom ici"
+        git config user.email "votre.email@ici"
+
+
+    --- INSTALL PROJET ---
+
+    ET OUVRIR UN TERMINAL DANS LE DOSSIER www/
+
+    composer create-project symfony/website-skeleton symfony
+
+    => CELA CREE UN DOSSIER www/symfony/
+    => IL Y A PLEIN DE DOSSIERS ET DE FICHIERS DEDANS...
+
+    VERIFIER QUE L'INSTALLATION FONCTIONNE
+    DANS LE NAVIGATEUR IL FAUT ALLER VISITER LE DOSSIER symfony/public/
+
+    DANS MON SERVEUR WEB, J'AI CETTE URL POUR LA RACINE DU SITE:
+    http://localhost:8888/symfony/public/
+
+    (ça peut changer suivant votre serveur...)
+
+    ON PEUT ACTIVER GIT
+    git init
+    (ensuite faire des commit pour créer des sauvegardes...)
+    
+    COMME ON A APACHE, IL FAUT AJOUTER LE FICHIER .htaccess
+
+    composer require symfony/apache-pack
+
+    => RESULTAT: AJOUTE LE FICHIER public/.htaccess
+
+    => DANS LE NAVIGATEUR, ON DOIT AVOIR LE BANDEAU NOIR (EN BAS) DU PROFILER
+
+    ON PEUT COMMENCER AJOUTER NOS PAGES
+    => ON UTILISE LA CONSOLE POUR GENERER UNE BASE DE CODE
+
+    php bin/console make:controller
+
+
+## TEMPLATE AVEC TWIG
+
+    https://twig.symfony.com/
+
+    SYMFONY CONSIDERE QUE PHP N'EST PAS SUFFISANT POUR LE TEMPLATING
+    => SYMFONY AJOUTE LE LANGAGE TWIG POUR GERER LES TEMPLATES
