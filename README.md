@@ -247,3 +247,14 @@ https://prod.liveshare.vsengsaas.visualstudio.com/join?B7391B28D873700375CA86460
     git init
 
     DANS VSCODE, FAIRE UN PREMIER COMMIT...
+
+    SI BESOIN CONFIGURER user.name ET user.email
+
+    git config user.name "votre nom ici"
+    git config user.email "votre.email@ici"
+
+## CREER SA PREMIERE PAGE AVEC SYMFONY
+
+    https://symfony.com/doc/current/page_creation.html
+
+    https://symfony.com/doc/current/page_creation.html#annotation-routes
