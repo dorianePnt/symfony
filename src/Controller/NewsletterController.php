@@ -17,6 +17,8 @@ class NewsletterController extends AbstractController
     public function index(NewsletterRepository $newsletterRepository): Response
     {
         return $this->render('newsletter/index.html.twig', [
+            // cle        => valeur
+            // variable twig
             'newsletters' => $newsletterRepository->findAll(),
         ]);
     }

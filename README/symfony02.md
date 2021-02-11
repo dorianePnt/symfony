@@ -309,3 +309,28 @@ class NewsletterController extends AbstractController
     
 }
 ```
+
+    LES METHODES CONTROLLER SONT RELIEES A DES TEMPLATES TWIG
+    QUI HERITENT DE base.html.twig
+
+    => ATTENTION AU CODE DANS base.html.twig
+        IL FAUT GARDER LES BLOCS title ET body
+
+
+## ACTIVATION DU MODE BOOTSTRAP POUR LA PARTIE ADMIN
+
+    https://symfony.com/doc/current/form/bootstrap4.html
+
+    MODIFIER LE FICHIER config/packages/twig.yaml
+
+```yaml
+
+twig:
+    default_path: '%kernel.project_dir%/templates'
+    form_themes: ['bootstrap_4_layout.html.twig']
+    
+```
+
+    ET ENSUITE COMPLETER base.html.twig POUR CHARGER LE CODE DE BOOTSTRAP
+    
+    https://getbootstrap.com/docs/4.6/getting-started/introduction/
