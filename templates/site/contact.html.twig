@@ -1,1 +1,22 @@
 {% extends 'parent.html.twig' %}
+
+{% block titre1 %}
+    <h1 class="titre2">CONTACT</h1>
+{% endblock %}
+
+{% block image1 %}
+    <img src="{{ asset('images/photo3.jpg') }}" alt="photo3">
+{% endblock %}
+
+{% block formulaire %}
+<form method="post">
+    <div>
+        <label for="nom">Votre nom</label>
+        <input type="text" name="nom" id="nom">
+    </div>
+    <div>
+        <label for="prenom">Votre prénom</label>
+        <input type="text" name="prenom" id="prenom">
+    </div>
+</form>
+{% endblock %}

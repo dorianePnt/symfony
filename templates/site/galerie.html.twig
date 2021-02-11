@@ -1,1 +1,13 @@
 {% extends 'parent.html.twig' %}
+
+{% block titre1 %}
+    <h1 class="titre1">GALERIE</h1>
+{% endblock %}
+
+{% block image1 %}
+    <section class="image">
+        <img src="{{ asset('images/photo1.jpg') }}" alt="photo1">
+        <img src="{{ asset('images/photo2.jpg') }}" alt="photo2">
+        <img src="{{ asset('images/photo3.jpg') }}" alt="photo3">
+    </section>
+{% endblock %}
