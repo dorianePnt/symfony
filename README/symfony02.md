@@ -259,3 +259,53 @@ NOUVELLE VERSION DEPUIS 2018
     ON A UNE LIGNE DE COMMANDE QUI PERMET DE GENERER LE CODE POUR UN CRUD A PARTIR D'UNE ENTITE
 
     php bin/console make:crud
+
+    The class name of the entity to create CRUD (e.g. BravePopsicle):
+    > Newsletter
+    Newsletter
+
+    created: src/Controller/NewsletterController.php
+    created: src/Form/NewsletterType.php
+    created: templates/newsletter/_delete_form.html.twig
+    created: templates/newsletter/_form.html.twig
+    created: templates/newsletter/edit.html.twig 
+    created: templates/newsletter/index.html.twig
+    created: templates/newsletter/new.html.twig       
+    created: templates/newsletter/show.html.twig      
+
+            
+    Success! 
+            
+
+    Next: Check your new CRUD by going to /newsletter/
+
+
+    PAUSE ET REPRISE A 15H45...
+
+
+    Create      => FORMULAIRE POUR AJOUTER UNE NOUVELLE LIGNE
+    Read        => AFFICHAGE LISTE ET AFFICHAGE UNE SEULE LIGNE
+    Update      => FORMULAIRE POUR MODIFIER UNE LIGNE EXISTANTE
+    Delete      => FORMULAIRE POUR SUPPRIMER UNE LIGNE EXISTANTE
+
+
+```php
+
+// ON AJOUTERA LE PREFIXE /admin A TOUTES LES ROUTES OBTENUES AVEC LE make:crud
+// => ON PREPARE LA PROTECTION POUR AUTORISER L'ACCES SEULEMENT LES ADMINISTRATEURS
+
+#[Route('/admin/newsletter')]      // PREFIXE COMMUN POUR LES URLS DANS LA CLASSE
+class NewsletterController extends AbstractController
+{
+    #[Route('/', name: 'newsletter_index', methods: ['GET'])]    // URL DANS LE NAVIAGATEUR /admin/newsletter/
+    public function index(NewsletterRepository $newsletterRepository): Response
+    {
+    }
+
+    #[Route('/new', name: 'newsletter_new', methods: ['GET', 'POST'])]   // URL DANS LE NAVIGATEUR /admin/newsletter/new
+    public function new(Request $request): Response
+    {
+    }
+    
+}
+```
