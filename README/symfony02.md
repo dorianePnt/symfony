@@ -122,3 +122,42 @@ class SiteController extends AbstractController
 </html>
 
 ```
+
+
+## EXO EN AUTONOMIE (60 MINUTES)
+
+    AJOUTER DES BLOCS DANS LE TEMPLATE PARENT
+    ET REMPLIR LES BLOCS DANS LES TEMPLATES ENFANTS
+
+    OBJECTIF: ARRIVER A CONSTRUIRE UN SITE AVEC DU CONTENU DIFFERENT SUR LES 3 PAGES...
+
+    NE PAS HESITER A POSER DES QUESTIONS...
+
+## BASE DE DONNEES ET SYMFONY
+
+    https://symfony.com/doc/current/doctrine.html
+
+    https://www.doctrine-project.org/
+
+    * VIDEOS TUTOS (CERTAINES PAYANTES...)
+    https://symfonycasts.com/screencast/symfony-doctrine
+
+
+    SYMFONY UTILISE LE CODE DU PROJET DOCTRINE POUR GERER LA PARTIE AVEC LA DATABASE...
+
+Dans .env (adapter en fonction de notre configuration et de notre besoin)=
+
+    ###> doctrine/doctrine-bundle ###
+    ...
+    DATABASE_URL="mysql://root:@localhost:3306/symfony?serverVersion=mariadb-10.4.17"
+    ...
+    ###< doctrine/doctrine-bundle ###
+
+```
+
+
+    ET ENSUITE DANS LE TERMINAL LANCER LA COMMANDE
+
+    php bin/console doctrine:database:create
+
+    ET SI TOUT SE PASSE BIEN, ON PEUT VERIFIER AVEC PHPMYADMIN QUE LA DATABASE EST CREEE...
