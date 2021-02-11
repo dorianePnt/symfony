@@ -14,27 +14,7 @@
         {% endblock %}
     </head>
     <body>
-
-        {% block monheader %}
-        <header>
-            <nav>
-                <a href="#">accueil</a>
-            </nav>
-        </header>
-        {% endblock %}
-
-        <h1>MON TITRE1</h1>
-        {% block monbloc %}
-        <h2>MON TITRE 2</h2>
-        {% endblock %}
-        {# mettre le html dans un bloc pour pouvoir changer son contenu dans d'autre template enfant (autre page) #}
-        
         {% block body %}{% endblock %}
-
-
-        <footer>
-            <p>tous droits réservés</p>
-        </footer>
-
     </body>
 </html>
+
