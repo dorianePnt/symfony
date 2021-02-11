@@ -146,7 +146,7 @@ class SiteController extends AbstractController
     SYMFONY UTILISE LE CODE DU PROJET DOCTRINE POUR GERER LA PARTIE AVEC LA DATABASE...
 
 Dans .env (adapter en fonction de notre configuration et de notre besoin)=
-
+```
     ###> doctrine/doctrine-bundle ###
     ...
     DATABASE_URL="mysql://root:@localhost:3306/symfony?serverVersion=mariadb-10.4.17"
@@ -161,3 +161,92 @@ Dans .env (adapter en fonction de notre configuration et de notre besoin)=
     php bin/console doctrine:database:create
 
     ET SI TOUT SE PASSE BIEN, ON PEUT VERIFIER AVEC PHPMYADMIN QUE LA DATABASE EST CREEE...
+
+    Created database `symfony` for connection named default
+
+## AJOUTER UNE TABLE SQL POUR ENREGISTRER LES INSCRIPTIONS A UNE NEWSLETTER
+
+    Table SQL newsletter
+        nom                 VARCHAR(255)
+        email               VARCHAR(255)
+        date_inscription    DATETIME
+
+    https://symfony.com/doc/current/doctrine.html#creating-an-entity-class
+
+    DANS SYMFONY, ON PASSE PAR UNE LIGNE DE COMMANDE QUI VA CREER UNE CLASSE PHP
+    ET ENSUITE, D'AUTRES LIGNES DE COMMANDES VONT CREER LA TABLE SQL...
+
+
+ON AURA UNE CLASSE Newsletter
+    => ON APPELLE ENTITE/ENTITY UNE CLASSE QUI EST RELIEE A UNE TABLE SQL 
+        (PERSISTENCE...)
+
+
+ET DANS NOTRE CLASSE, ON AURA DES PROPRIETES 
+    => CES PROPRIETES VONT DEVENIR DES COLONNES DANS NOTRE TABLE SQL
+        (ORM Object Relationship Mapping)
+
+    EN PHP, ON A                EN SQL, ON A
+    UNE CLASSE Newsletter       UNE TABLE newsletter
+    UNE PROPRIETE               UNE COLONNE
+        id                          id
+        nom                         nom
+        email                       email
+        dateInscription             date_inscription
+
+
+    php bin/console make:entity
+
+    => ASSISTANT POUR CREER LA CLASSE ET LES PROPRIETES
+
+EXEMPLE :
+php bin/console make:entity
+
+Class name of the entity to create or update:
+> Newsletter
+
+New property name (press <return> to stop adding fields):
+> nom
+
+Field type (enter ? to see all types) [string]:
+> string
+
+Field length [255]:
+> 255
+
+Can this field be null in the database (nullable) (yes/no) [no]:
+> no
+
+New property name (press <return> to stop adding fields):
+> email
+
+Field type (enter ? to see all types) [string]:
+> string
+
+Field length [255]:
+> 255
+
+Can this field be null in the database (nullable) (yes/no) [no]:
+> no
+
+New property name (press <return> to stop adding fields):
+> dateInscription
+
+Field type (enter ? to see all types) [string]:
+> datetime
+
+Can this field be null in the database (nullable) (yes/no) [no]:
+> no
+
+
+    ENSUITE QUAND ON EST BON SUR LA CLASSE ENTITE Newsletter.php
+    ON PEUT LANCER LA COMMANDE SUIVANTE...
+
+    php bin/console make:migration
+
+    => CREE UN FICHIER DANS LE DOSSIER migrations
+    => IL Y A LE CODE SQL QUI PERMET DE CREER LA TABLE SQL
+
+    ENSUITE, IL FAUT LANCER LA COMMANDE POUR EXECUTER LA REQUETE SQL
+    
+    php bin/console doctrine:migrations:migrate
