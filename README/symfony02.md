@@ -250,3 +250,12 @@ Can this field be null in the database (nullable) (yes/no) [no]:
     ENSUITE, IL FAUT LANCER LA COMMANDE POUR EXECUTER LA REQUETE SQL
     
     php bin/console doctrine:migrations:migrate
+
+## GENERER UN CRUD A PARTIR D'UNE ENTITE
+
+NOUVELLE VERSION DEPUIS 2018
+    https://symfony.com/blog/new-and-improved-generators-for-makerbundle#added-a-new-make-crud-generator
+
+    ON A UNE LIGNE DE COMMANDE QUI PERMET DE GENERER LE CODE POUR UN CRUD A PARTIR D'UNE ENTITE
+
+    php bin/console make:crud
