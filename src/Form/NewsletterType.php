@@ -16,7 +16,8 @@ class NewsletterType extends AbstractType
         // on définit les champs du formulaire
             ->add('nom')
             ->add('email')
-            ->add('dateInscription')
+         // ->add('dateInscription')
+            // => grace à la manip dans NewsletterController, on n'a plus besoin de mettre la date cat elle est automatiquement prérempli
         ;
     }
 

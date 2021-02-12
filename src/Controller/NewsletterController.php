@@ -25,16 +25,26 @@ class NewsletterController extends AbstractController
 
 
         // => modifie le formulaire SQL
-        $newsletter->setDateInscription(new \DateTime());
+        // attention: le pré-remplissage doit se faire avant createForm
+        // $newsletter->setDateInscription(new \DateTime());
             // => prerempli la date et l'heure
-        $newsletter->setNom("nom prérempli");
+        // $newsletter->setNom("nom prérempli");
             // => prérempli le nom
 
 
         $form = $this->createForm(NewsletterType::class, $newsletter);
+        // connecte le formulaire avec les infos reçues du navigateur
         $form->handleRequest($request);
+        // si le formulaire est envoyé ET les infos sont correctes
 
         if ($form->isSubmitted() && $form->isValid()) {
+            // alors on traite le formulaire
+
+            // ici on peut compléter les infos manquantes
+            $objetDate = new \DateTime();   // objet qui contient la date actuelle
+            $newsletter->setDateInscription($objetDate);
+
+            // on envoie les infos en base de données
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($newsletter);
             $entityManager->flush();
