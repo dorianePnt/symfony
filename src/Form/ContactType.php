@@ -17,7 +17,7 @@ class ContactType extends AbstractType
             ->add('prenom')
             ->add('objet')
             ->add('message')
-            ->add('dateMessage')
+            // ->add('dateMessage')
         ;
     }
 

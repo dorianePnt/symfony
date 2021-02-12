@@ -88,6 +88,11 @@ class SiteController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            // ici on peut compléter les infos manquantes
+            $objetDate = new \DateTime();   // objet qui contient la date actuelle
+            $contact->setDateMessage($objetDate);
+
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($contact);
             $entityManager->flush();
