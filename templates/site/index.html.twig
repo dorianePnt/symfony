@@ -10,6 +10,9 @@ le template enfant ne fait que remplir des blocks definis par le parent
     {{ form_start(form) }}
         {{ form_widget(form) }}
         <button class="btn">{{ button_label|default('Save') }}</button>
+
+        <div class="{{ classConfirmation ?? 'gris' }}">{{ messageConfirmation ?? "texte par défaut" }}</div>
+
     {{ form_end(form) }}
 
 {% endblock %}

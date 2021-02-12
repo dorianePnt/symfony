@@ -37,3 +37,12 @@ nav a{
 .titre2 {
     color: green;
 }
+
+
+.gris {
+    background-color: #cccccc;
+}
+
+.vert {
+    background-color: lightgreen;
+}

@@ -15,6 +15,9 @@ class SiteController extends AbstractController
     #[Route('/', name: 'index', methods: ['GET', 'POST'])]
     public function index(Request $request): Response
     {
+        $messageConfirmation    = 'merci de remplir le formulaire';
+        $classConfirmation      = 'gris';
+
         $newsletter = new Newsletter(); // code créé avec le make:entity
         $form = $this->createForm(NewsletterType::class, $newsletter);
         $form->handleRequest($request);
@@ -32,12 +35,18 @@ class SiteController extends AbstractController
             $entityManager->persist($newsletter);
             $entityManager->flush();
 
+            // tout c'est bien passé
+            $messageConfirmation    = 'merci de votre inscription';
+            $classConfirmation      = 'vert';
+
             // pas de redirection pour la page d'accueil
             // return $this->redirectToRoute('newsletter_index');
         }
 
 
         return $this->render('site/index.html.twig', [
+            'classConfirmation'    => $classConfirmation,
+            'messageConfirmation' => $messageConfirmation,  //tuyau de transmission entre PHP et twig
             'controller_name' => 'SiteController',
             'form' => $form->createView(),
             'controller_name' => 'SiteController',
