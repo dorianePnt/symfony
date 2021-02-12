@@ -10,6 +10,12 @@ use Symfony\Component\HttpFoundation\Request;
 use App\Entity\Newsletter;
 use App\Form\NewsletterType;
 
+use App\Entity\Contact;
+use App\Form\ContactType;
+
+
+
+
 class SiteController extends AbstractController
 {
     #[Route('/', name: 'index', methods: ['GET', 'POST'])]
@@ -53,6 +59,10 @@ class SiteController extends AbstractController
         ]);
     }
 
+
+
+
+
     #[Route('/galerie', name: 'galerie')]
     public function galerie(): Response
     {
@@ -61,10 +71,38 @@ class SiteController extends AbstractController
         ]);
     }
 
-    #[Route('/contact', name: 'contact')]
-    public function contact(): Response
+
+
+
+
+
+    #[Route('/contact', name: 'contact', methods: ['GET'])]
+    public function contact(Request $request): Response
     {
+
+        $messageConfirmation    = 'merci de remplir le formulaire';
+        $classConfirmation      = 'gris';
+
+        $contact = new Contact();
+        $form = $this->createForm(ContactType::class, $contact);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $entityManager = $this->getDoctrine()->getManager();
+            $entityManager->persist($contact);
+            $entityManager->flush();
+
+            // return $this->redirectToRoute('contact_index');
+            $messageConfirmation    = 'merci de votre inscription';
+            $classConfirmation      = 'vert';
+        }
+
         return $this->render('site/contact.html.twig', [
+            'classConfirmation'    => $classConfirmation,
+            'messageConfirmation' => $messageConfirmation,  //tuyau de transmission entre PHP et twig
+
+            'contact' => $contact,
+            'form' => $form->createView(),
             'controller_name' => 'SiteController',
         ]);
     }
