@@ -13,20 +13,24 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('/admin/newsletter')]
 class NewsletterController extends AbstractController
 {
-    #[Route('/', name: 'newsletter_index', methods: ['GET'])]
-    public function index(NewsletterRepository $newsletterRepository): Response
-    {
-        return $this->render('newsletter/index.html.twig', [
-            // cle        => valeur
-            // variable twig
-            'newsletters' => $newsletterRepository->findAll(),
-        ]);
-    }
 
     #[Route('/new', name: 'newsletter_new', methods: ['GET', 'POST'])]
     public function new(Request $request): Response
     {
-        $newsletter = new Newsletter();
+        // $request est fourni par symfony
+        // $request permet de récupérer les infos de formulaire
+
+        $newsletter = new Newsletter(); // code créé avec le make:entity
+        // $newsletter est un objet qui va contenir les infos de formulaire
+
+
+        // => modifie le formulaire SQL
+        $newsletter->setDateInscription(new \DateTime());
+            // => prerempli la date et l'heure
+        $newsletter->setNom("nom prérempli");
+            // => prérempli le nom
+
+
         $form = $this->createForm(NewsletterType::class, $newsletter);
         $form->handleRequest($request);
 
@@ -44,13 +48,6 @@ class NewsletterController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'newsletter_show', methods: ['GET'])]
-    public function show(Newsletter $newsletter): Response
-    {
-        return $this->render('newsletter/show.html.twig', [
-            'newsletter' => $newsletter,
-        ]);
-    }
 
     #[Route('/{id}/edit', name: 'newsletter_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Newsletter $newsletter): Response

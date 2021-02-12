@@ -342,3 +342,10 @@ twig:
     ET ENSUITE CREER UN REPO VIDE SUR GITHUB.COM
 
     ENFIN ON VA CONNECTER NOTRE DOSSIER GIT AVEC LE REPO GITHUB.COM
+
+    ET DANS VSCODE, ON PEUT AJOUTER LES LIGNES DE COMMANDE 
+    POUR LIER NOTRE DOSSIER AVEC LE REPOSITORY GITHUB.COM
+
+    git remote add origin https://github.com/dorianePnt/symfony.git
+    git branch -M main
+    git push -u origin main

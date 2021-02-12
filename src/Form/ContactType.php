@@ -2,28 +2,29 @@
 
 namespace App\Form;
 
-use App\Entity\Newsletter;
+use App\Entity\Contact;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class NewsletterType extends AbstractType
+class ContactType extends AbstractType
 {
-     // cette méthode est activée par le controller $this->createForm
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-        // on définit les champs du formulaire
-            ->add('nom')
             ->add('email')
-            ->add('dateInscription')
+            ->add('nom')
+            ->add('prenom')
+            ->add('objet')
+            ->add('message')
+            ->add('dateMessage')
         ;
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Newsletter::class,
+            'data_class' => Contact::class,
         ]);
     }
 }
