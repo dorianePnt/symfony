@@ -86,6 +86,19 @@ https://prod.liveshare.vsengsaas.visualstudio.com/join?5B7E4396136B4B071A78E0002
     changer le code PHP
     changer le code twig
 
+* Mise du formulaire ajout newsletter (sql) dans page accueil
+    => de NewsletterController.php vers SiteController.php
+    => Modification dans SiteController pour affichage heure (preremplissage)
+    => Suppression de la ligne (remplir la date dans le formulaire) dans NewsletterType.php
+    => Modification de index.html.twig pour mettre le HTML du fomulaire recuperer dans form.html.twig
+
+* Mise du formulaire ajout contact(sql) dans page contact
+    => de ContactController.php vers SiteController.php
+    => Modification dans SiteController pour affichage heure (preremplissage)
+    => Suppression de la ligne (remplir la date dans le formulaire) dans ContactType.php
+    => Modification de contact.html.twig pour mettre le HTML du fomulaire recuperer dans form.html.twig
+
+
 ```php
 <?php
 
