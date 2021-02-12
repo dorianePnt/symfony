@@ -76,7 +76,7 @@ class SiteController extends AbstractController
 
 
 
-    #[Route('/contact', name: 'contact', methods: ['GET'])]
+    #[Route('/contact', name: 'contact', methods: ['GET', 'POST'])]
     public function contact(Request $request): Response
     {
 
