@@ -125,3 +125,30 @@ https://prod.liveshare.vsengsaas.visualstudio.com/join?B41D3B9E942814ABD44E222C1
     php bin/console make:migration
 
     php bin/console doctrine:migrations:migrate
+
+    AJOUTER LE CHAMP email DANS LE FORMULAIRE
+
+    AJOUTER LA DATE PAR DEFAUT POUR LA PROPRIETE dateCreation
+
+    => ON A UN FORMULAIRE DE CREATION QUI FONCTIONNE
+
+    ENSUITE VERIFIER LA PAGE /login
+
+    => IL FAUT COMPLETER LE CODE PHP POUR REDIRIGER VERS LA BONNE PAGE
+
+
+## PROTECTION DE LA PARTIE ADMIN
+
+        RAJOUTER UNE LIGNE DANS LE FICHIER 
+    config/packages/security.yaml
+
+```yaml
+
+    # Easy way to control access for large sections of your site
+    # Note: Only the *first* access control that matches will be used
+    access_control:
+        - { path: ^/admin, roles: ROLE_ADMIN }
+        # - { path: ^/admin, roles: ROLE_ADMIN }
+        # - { path: ^/profile, roles: ROLE_USER }
+
+```
