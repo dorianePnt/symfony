@@ -84,3 +84,12 @@ https://prod.liveshare.vsengsaas.visualstudio.com/join?B41D3B9E942814ABD44E222C1
     created: src/Controller/SecurityController.php
     created: templates/security/login.html.twig
 ```
+
+
+
+    * ON VA LANCER LA COMMANDE 
+
+    php bin/console make:registration-form
+
+    CA VA GENERER LE CODE...
+    https://symfonycasts.com/screencast/symfony-forms/registration-form
