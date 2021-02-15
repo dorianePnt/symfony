@@ -19,8 +19,10 @@ https://prod.liveshare.vsengsaas.visualstudio.com/join?B41D3B9E942814ABD44E222C1
 
     php bin/console make:user
 
+
+
+
 ```
-exemple :
     php bin/console make:user
 
     The name of the security user class (e.g. User) [User]:
@@ -40,4 +42,45 @@ exemple :
     created: src/Repository/UserRepository.php
     updated: src/Entity/User.php
     updated: config/packages/security.yaml
+```
+
+
+
+    ON A UNE BASE DE CODE POUR L'ENTITE User
+    MAIS IL MANQUE DES PROPRIETES
+
+    email           string(255)      VARCHAR(255)
+    dateCreation    datetime         DATETIME
+    ...  
+
+    SE POSER DES QUESTIONS SUR LE RGPD ET LA LEGALITE DES INFOS SUR LES UTILISATEURS...
+
+    * CONNECTER NOTRE ENTITE AVEC LE SYSTEME DE SECURITE DE SYMFONY
+
+    https://symfony.com/doc/current/security/form_login_setup.html#generating-the-login-form
+
+
+
+
+```
+     php bin/console make:auth
+
+    What style of authentication do you want? [Empty authenticator]:
+    [0] Empty authenticator
+    [1] Login form authenticator
+    > 1
+
+    The class name of the authenticator to create (e.g. AppCustomAuthenticator):
+    > LoginFormAuthenticator
+
+    Choose a name for the controller class (e.g. SecurityController) [SecurityController]:
+    > SecurityController
+
+    Do you want to generate a '/logout' URL? (yes/no) [yes]:
+    > yes
+
+    created: src/Security/LoginFormAuthenticator.php
+    updated: config/packages/security.yaml
+    created: src/Controller/SecurityController.php
+    created: templates/security/login.html.twig
 ```
