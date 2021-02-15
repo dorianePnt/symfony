@@ -106,3 +106,12 @@ https://prod.liveshare.vsengsaas.visualstudio.com/join?B41D3B9E942814ABD44E222C1
     DANS LE TERMINAL (ET DANS LE DOSSIER syfmony/)
 
     composer require symfonycasts/verify-email-bundle
+
+
+
+
+
+    SI ON ESSAIE D'ALLER SUR LA PAGE /register POUR CREER UN COMPTE
+    ON A UNE ERREUR SUR LA CONFIG MAILER_DSN
+
+    https://symfony.com/doc/current/mailer.html
