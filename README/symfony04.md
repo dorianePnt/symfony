@@ -100,3 +100,9 @@ https://prod.liveshare.vsengsaas.visualstudio.com/join?B41D3B9E942814ABD44E222C1
 
     CA VA GENERER LE CODE...
     https://symfonycasts.com/screencast/symfony-forms/registration-form
+
+    LE SITE A CASSE CAR IL ME MANQUE UN BUNDLE POUR L'ENVOI D'EMAIL DE CONFIRMATION
+
+    DANS LE TERMINAL (ET DANS LE DOSSIER syfmony/)
+
+    composer require symfonycasts/verify-email-bundle
