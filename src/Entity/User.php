@@ -6,10 +6,13 @@ use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
+// ne pas oublier d'ajouter les use
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
- * @UniqueEntity(fields={"username"}, message="There is already an account with this username")
+ * @UniqueEntity(fields={"username"}, message="Pseudo non disponible.")
+ * @UniqueEntity(fields={"email"}, message="Cet email est déjà associé à un compte.")
  */
 class User implements UserInterface
 {
@@ -38,6 +41,9 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Email(
+     *     message = "Désolé '{{ value }}' n'est pas une email valide."
+     * )
      */
     private $email;
 

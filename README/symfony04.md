@@ -152,3 +152,45 @@ https://prod.liveshare.vsengsaas.visualstudio.com/join?B41D3B9E942814ABD44E222C1
         # - { path: ^/profile, roles: ROLE_USER }
 
 ```
+
+
+## PROTEGER LES FORMULAIRES EN AJOUTANT DES CONTRAINTES
+
+    * LISTE DES CONTRAINTES DISPONIBLES
+    https://symfony.com/doc/current/reference/constraints.html
+
+    * LIGNE UNIQUE
+    https://symfony.com/doc/current/reference/constraints/UniqueEntity.html
+
+    * PROPRIETE EMAIL
+    https://symfony.com/doc/current/reference/constraints/Email.html
+
+```php
+// ...
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+
+// ...
+use Symfony\Component\Validator\Constraints as Assert;
+
+
+/**
+ * @ORM\Entity(repositoryClass=UserRepository::class)
+ * @UniqueEntity(fields={"username"}, message="There is already an account with this username")
+ * @UniqueEntity(fields={"email"}, message="il y a déjà un compte avec cet email")
+ */
+class User implements UserInterface
+{
+    // ...
+    /**
+     * @ORM\Column(type="string", length=255)
+     * @Assert\Email(
+     *     message = "désolé '{{ value }}' n'est pas un email valide."
+     * )
+     */
+    private $email;
+
+    // ...
+
+}
+
+```
