@@ -15,8 +15,10 @@
         {{ form_row(registrationForm.plainPassword, {
             label: 'Password'
         }) }}
-        {{ form_row(registrationForm.agreeTerms) }}
+        {{ form_row(registrationForm.agreeTerms, {
+            label: "J'accepte les conditions"
+        }) }}
 
-        <button type="submit" class="btn btn-primary">Register</button>
+        <button type="submit" class="btn btn-primary">Créez votre compte</button>
     {{ form_end(registrationForm) }}
 {% endblock %}
