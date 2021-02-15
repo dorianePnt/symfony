@@ -110,8 +110,18 @@ https://prod.liveshare.vsengsaas.visualstudio.com/join?B41D3B9E942814ABD44E222C1
 
 
 
-
     SI ON ESSAIE D'ALLER SUR LA PAGE /register POUR CREER UN COMPTE
     ON A UNE ERREUR SUR LA CONFIG MAILER_DSN
 
     https://symfony.com/doc/current/mailer.html
+
+    => modification du fichier .env
+
+
+
+    LA PAGE /register S'AFFICHE MAIS ON N'A PAS LA TABLE SQL
+
+    => on la crée avec : 
+    php bin/console make:migration
+
+    php bin/console doctrine:migrations:migrate
