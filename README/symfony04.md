@@ -53,6 +53,13 @@ https://prod.liveshare.vsengsaas.visualstudio.com/join?B41D3B9E942814ABD44E222C1
     dateCreation    datetime         DATETIME
     ...  
 
+    LANCER LA COMMANDE POUR COMPLETER LES PROPRIETES...
+    
+    php bin/console make:entity
+
+
+
+
     SE POSER DES QUESTIONS SUR LE RGPD ET LA LEGALITE DES INFOS SUR LES UTILISATEURS...
 
     * CONNECTER NOTRE ENTITE AVEC LE SYSTEME DE SECURITE DE SYMFONY
@@ -87,7 +94,7 @@ https://prod.liveshare.vsengsaas.visualstudio.com/join?B41D3B9E942814ABD44E222C1
 
 
 
-    * ON VA LANCER LA COMMANDE 
+    * ON VA LANCER LA COMMANDE POUR LA L'INSCRIPTION DE L'UTILISATEUR
 
     php bin/console make:registration-form
 
