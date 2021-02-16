@@ -1,48 +1,58 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mon Projet Symfony</title>
-    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Mon Projet Symfony</title>
+		<link rel="stylesheet" href="{{ asset('css/style.css') }}"> {% block carte1 %}{% endblock %}
 
-    {% block carte1 %}
-    {% endblock %}
+		</head>
+		<body>
+			<header>
+				<nav>
+					<a href="{{ path('index') }}">accueil</a>
+					<a href="{{ path('galerie') }}">galerie</a>
+					{# <a href="{{ path('annonce') }}">annonces</a> #}
+					<a href="{{ path('contact') }}">contact</a>
+				</nav>
 
-</head>
-<body>
-    <header>
-        <nav>
-            <a href="{{ path('index') }}">accueil</a>
-            <a href="{{ path('galerie') }}">galerie</a>
-            <a href="{{ path('annonce') }}">annonces</a>
-            <a href="{{ path('contact') }}">contact</a>
-        </nav>
-    </header>
-    <main>
-        <section>
 
-        {% block titre1 %}
-            <h1>MON TITRE 1</h1>
-        {% endblock %}
+				{% if app.user %}
+					<div class="mb-3">
+						Bienvenue
+						{{ app.user.username }},
+						<a href="{{ path('app_logout') }}">Déconnexion</a>
+					</div>
+				{% else %}
+					<nav>
+						<a href="{{ path('app_register') }}">Créez votre compte</a>
+						<a href="{{ path('app_login') }}">Connexion</a>
+					</nav>
+				{% endif %}
 
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi, numquam in, mollitia culpa quia nostrum eius amet modi ipsam minus inventore assumenda eum ipsum voluptates, totam quibusdam similique consequatur expedita?</p>
+			</header>
+			<main>
+				<section>
 
-        {% block image1 %}
-            <img src="{{ asset('images/photo1.jpg') }}" alt="photo1">
-        {% endblock %}
+					{% block titre1 %}
+						<h1>MON TITRE 1</h1>
+					{% endblock %}
 
-        {% block formulaire %}
-        {% endblock %}
+					<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi, numquam in, mollitia culpa quia nostrum eius amet modi ipsam minus inventore assumenda eum ipsum voluptates, totam quibusdam similique consequatur expedita?</p>
 
-        {% block carte2 %}
-        {% endblock %}
+					{% block image1 %}
+						<img src="{{ asset('images/photo1.jpg') }}" alt="photo1">
+					{% endblock %}
 
-        </section>
-    </main>
-    <footer>
-        <p>tous droits réservés</p>
-    </footer>
-</body>
-<script src="{{ asset('js/script.js') }}"></script>
-</html>
+					{% block formulaire %}{% endblock %}
+
+					{% block carte2 %}{% endblock %}
+
+				</section>
+			</main>
+			<footer>
+				<p>tous droits réservés</p>
+			</footer>
+		</body>
+		<script src="{{ asset('js/script.js') }}"></script>
+	</html>

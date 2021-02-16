@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Security;
+// => CONNECTE AU DOSSIER src/Security/
 
 use App\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
@@ -30,13 +31,25 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator implements P
     private $urlGenerator;
     private $csrfTokenManager;
     private $passwordEncoder;
+    // pour récupérer le user connecté
+    private $security;
 
-    public function __construct(EntityManagerInterface $entityManager, UrlGeneratorInterface $urlGenerator, CsrfTokenManagerInterface $csrfTokenManager, UserPasswordEncoderInterface $passwordEncoder)
+    public function __construct(Security $security, EntityManagerInterface $entityManager, UrlGeneratorInterface $urlGenerator, CsrfTokenManagerInterface $csrfTokenManager, UserPasswordEncoderInterface $passwordEncoder)
     {
+        // INJECTION DE DEPENDANCES
+        // => ON NE PAS LES OBJETS, C'EST SYMFONY QUI CREE LES OBJETS 
+        // ET NOUS LES FOURNIT EN PARAMETRE
+
         $this->entityManager = $entityManager;
         $this->urlGenerator = $urlGenerator;
         $this->csrfTokenManager = $csrfTokenManager;
         $this->passwordEncoder = $passwordEncoder;
+
+        // on mémorise l'objet $security dans une propriété pour pouvoir l'utiliser plus tard
+        // Avoid calling getUser() in the constructor: auth may not
+        // be complete yet. Instead, store the entire Security object.
+        $this->security = $security;
+
     }
 
     public function supports(Request $request)
@@ -96,12 +109,37 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator implements P
             return new RedirectResponse($targetPath);
         }
 
+
+
+        // IL FAUT RECUPERER L'UTILISATEUR CONNECTE
+        // ET SUIVANT LE ROLE DE L'UTILISATEUR, ON LE REDIRIGE VERS L'ESPACE ADMIN OU MEMBRE
+        // https://symfony.com/doc/current/security.html#b-fetching-the-user-from-a-service
+        $userConnecte = $this->security->getUser();
+        // https://symfony.com/doc/current/security.html#hierarchical-roles
+        $isAdmin = in_array("ROLE_ADMIN", $userConnecte->getRoles());
+
+        if ($isAdmin) {
+            // redirection vers la page /admin
+            return new RedirectResponse($this->urlGenerator->generate('admin'));
+        }
+        elseif (in_array("ROLE_MEMBRE", $userConnecte->getRoles())) {
+            // redirection vers la page /admin
+            return new RedirectResponse($this->urlGenerator->generate('membre'));
+
+        }
+
+
+
+
         // For example : 
-        // TODO changer la redirection vers une page membre
-        // Pour le moment, on redirige vers la page d'accueil
+        // TODO: CHANGER LA REDIRECTION VERS UNE PAGE ESPACE MEMBRE
+        // POUR LE MOMENT, ON REDIRIGE VERS LA PAGE D'ACCUEIL...
         return new RedirectResponse($this->urlGenerator->generate('index'));
         // throw new \Exception('TODO: provide a valid redirect inside '.__FILE__);
     }
+
+
+
 
     protected function getLoginUrl()
     {

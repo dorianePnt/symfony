@@ -72,3 +72,30 @@ CREER LES ENTITES ET LE CRUD (make:entity ET make:crud)
 
     RAJOUTER LES RELATIONS DANS UN 2E TEMPS
     user_id     => ONE TO MANY (relation avec User)
+
+## AJOUT DE RELATIONS ENTRE ENTITES
+
+    LANCER LA COMMANDE make:entity
+    ET CREER UNE PROPRIETE
+    ET CHOISIR COMME TYPE relation
+    REPONDRE AUX QUESTIONS...
+
+## TWIG POUR AFFICHER UN MENU DIFFERENT SI LE VISITEUR EST CONNECTE
+
+    DANS TWIG SYMFONY CREE UNE VARIABLE app 
+    QU'ON PEUT UTILISER POUR RETROUVER L'UTILISATEUR CONNECTE
+    
+```twig
+
+        {% if app.user %}
+            <div class="mb-3">
+                Bienvenue {{ app.user.username }}, <a href="{{ path('app_logout') }}">Déconnexion</a>
+            </div>
+        {% else %}
+            <nav>
+                <a href="{{ path('app_register') }}">créez votre compte</a>
+                <a href="{{ path('app_login') }}">connexion</a>
+            </nav>
+        {% endif %}
+
+```
