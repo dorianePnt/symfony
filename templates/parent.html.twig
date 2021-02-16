@@ -16,23 +16,25 @@
 					<a href="{{ path('contact') }}">contact</a>
 				</nav>
 				{% if is_granted('ROLE_ADMIN') %}
-            <div class="mb-3">
-                Bienvenue {{ app.user.username }}, 
-                <a href="{{ path('admin') }}">admin</a>
-                <a href="{{ path('app_logout') }}">Déconnexion</a>
-            </div>
-        {% elseif is_granted('ROLE_USER') %}
-            <div class="mb-3">
-                Bienvenue {{ app.user.username }}, 
-                <a href="{{ path('membre') }}">espace membre</a>
-                <a href="{{ path('app_logout') }}">Déconnexion</a>
-            </div>
-        {% else %}
-            <nav>
-                <a href="{{ path('app_register') }}">créez votre compte</a>
-                <a href="{{ path('app_login') }}">connexion</a>
-            </nav>
-        {% endif %}
+					<div class="mb-3">
+						Bienvenue
+						{{ app.user.username }},
+						<a href="{{ path('admin') }}">admin</a>
+						<a href="{{ path('app_logout') }}">Déconnexion</a>
+					</div>
+				{% elseif is_granted('ROLE_USER') %}
+					<div class="mb-3">
+						Bienvenue
+						{{ app.user.username }},
+						<a href="{{ path('membre') }}">espace membre</a>
+						<a href="{{ path('app_logout') }}">Déconnexion</a>
+					</div>
+				{% else %}
+					<nav>
+						<a href="{{ path('app_register') }}">créez votre compte</a>
+						<a href="{{ path('app_login') }}">connexion</a>
+					</nav>
+				{% endif %}
 			</header>
 			<main>
 				<section>
@@ -40,6 +42,8 @@
 					{% block titre1 %}
 						<h1>MON TITRE 1</h1>
 					{% endblock %}
+
+					{% block annonces %}{% endblock %}
 
 					<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nisi, numquam in, mollitia culpa quia nostrum eius amet modi ipsam minus inventore assumenda eum ipsum voluptates, totam quibusdam similique consequatur expedita?</p>
 
