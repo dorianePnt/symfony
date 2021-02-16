@@ -118,23 +118,20 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator implements P
         // https://symfony.com/doc/current/security.html#hierarchical-roles
         $isAdmin = in_array("ROLE_ADMIN", $userConnecte->getRoles());
 
+        $nomRouteRedirection = "index";
         if ($isAdmin) {
             // redirection vers la page /admin
-            return new RedirectResponse($this->urlGenerator->generate('admin'));
+            $nomRouteRedirection = "admin";
         }
         elseif (in_array("ROLE_MEMBRE", $userConnecte->getRoles())) {
             // redirection vers la page /admin
-            return new RedirectResponse($this->urlGenerator->generate('membre'));
-
+            $nomRouteRedirection = "membre";
         }
-
-
-
 
         // For example : 
         // TODO: CHANGER LA REDIRECTION VERS UNE PAGE ESPACE MEMBRE
         // POUR LE MOMENT, ON REDIRIGE VERS LA PAGE D'ACCUEIL...
-        return new RedirectResponse($this->urlGenerator->generate('index'));
+        return new RedirectResponse($this->urlGenerator->generate($nomRouteRedirection));
         // throw new \Exception('TODO: provide a valid redirect inside '.__FILE__);
     }
 
