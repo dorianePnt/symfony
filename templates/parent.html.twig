@@ -11,22 +11,28 @@
 			<header>
 				<nav>
 					<a href="{{ path('index') }}">accueil</a>
+					<a href="{{ path('annonces') }}">annonces</a>
 					<a href="{{ path('galerie') }}">galerie</a>
 					<a href="{{ path('contact') }}">contact</a>
 				</nav>
-				{% if app.user %}
-					<div class="mb-3">
-						Bienvenue
-						{{ app.user.username }},
-						<a href="{{ path('admin') }}">admin</a>
-						<a href="{{ path('app_logout') }}">Déconnexion</a>
-					</div>
-				{% else %}
-					<nav>
-						<a href="{{ path('app_register') }}">créez votre compte</a>
-						<a href="{{ path('app_login') }}">connexion</a>
-					</nav>
-				{% endif %}
+				{% if is_granted('ROLE_ADMIN') %}
+            <div class="mb-3">
+                Bienvenue {{ app.user.username }}, 
+                <a href="{{ path('admin') }}">admin</a>
+                <a href="{{ path('app_logout') }}">Déconnexion</a>
+            </div>
+        {% elseif is_granted('ROLE_USER') %}
+            <div class="mb-3">
+                Bienvenue {{ app.user.username }}, 
+                <a href="{{ path('membre') }}">espace membre</a>
+                <a href="{{ path('app_logout') }}">Déconnexion</a>
+            </div>
+        {% else %}
+            <nav>
+                <a href="{{ path('app_register') }}">créez votre compte</a>
+                <a href="{{ path('app_login') }}">connexion</a>
+            </nav>
+        {% endif %}
 			</header>
 			<main>
 				<section>

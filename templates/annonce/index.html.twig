@@ -10,6 +10,7 @@
             <tr>
                 <th>Id</th>
                 <th>Titre</th>
+                <th>Slug</th>
                 <th>Contenu</th>
                 <th>Image</th>
                 <th>DatePublication</th>
@@ -21,6 +22,7 @@
             <tr>
                 <td>{{ annonce.id }}</td>
                 <td>{{ annonce.titre }}</td>
+                <td>{{ annonce.slug }}</td>
                 <td>{{ annonce.contenu }}</td>
                 <td>{{ annonce.image }}</td>
                 <td>{{ annonce.datePublication ? annonce.datePublication|date('Y-m-d H:i:s') : '' }}</td>
@@ -31,7 +33,7 @@
             </tr>
         {% else %}
             <tr>
-                <td colspan="6">no records found</td>
+                <td colspan="7">no records found</td>
             </tr>
         {% endfor %}
         </tbody>

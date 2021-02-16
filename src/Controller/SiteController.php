@@ -13,6 +13,8 @@ use App\Form\NewsletterType;
 use App\Entity\Contact;
 use App\Form\ContactType;
 
+use App\Repository\AnnonceRepository;
+
 
 
 class SiteController extends AbstractController
@@ -106,6 +108,14 @@ class SiteController extends AbstractController
             'contact' => $contact,
             'form' => $form->createView(),
             'controller_name' => 'SiteController',
+        ]);
+    }
+
+    #[Route('/annonces', name: 'annonces', methods: ['GET'])]
+    public function annonces(AnnonceRepository $annonceRepository): Response
+    {
+        return $this->render('site/annonces.html.twig', [
+            'annonces' => $annonceRepository->findAll(), //SELECT * FROM annonces
         ]);
     }
 }
