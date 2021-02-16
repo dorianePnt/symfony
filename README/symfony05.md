@@ -75,16 +75,63 @@ CREER LES ENTITES ET LE CRUD (make:entity ET make:crud)
 
 ## AJOUT DE RELATIONS ENTRE ENTITES
 
+    * DOCUMENTATION UN PEU PLUS DETAILLEE SUR LES ETAPES AVEC make:entity
+    https://symfony.com/doc/current/doctrine/associations.html
+
     LANCER LA COMMANDE make:entity
     ET CREER UNE PROPRIETE
     ET CHOISIR COMME TYPE relation
     REPONDRE AUX QUESTIONS...
 
+```
+    $ php bin/console make:entity
+
+    Class name of the entity to create or update (e.g. BraveChef):
+    > Product
+
+    New property name (press <return> to stop adding fields):
+    > category
+
+    Field type (enter ? to see all types) [string]:
+    > relation
+
+    What class should this entity be related to?:
+    > Category
+
+    Relation type? [ManyToOne, OneToMany, ManyToMany, OneToOne]:
+    > ManyToOne
+
+    Is the Product.category property allowed to be null (nullable)? (yes/no) [yes]:
+    > no
+
+    Do you want to add a new property to Category so that you can access/update
+    Product objects from it - e.g. $category->getProducts()? (yes/no) [yes]:
+    > yes
+
+    New field name inside Category [products]:
+    > products
+
+    Do you want to automatically delete orphaned App\Entity\Product objects
+    (orphanRemoval)? (yes/no) [no]:
+    > no
+
+    New property name (press <return> to stop adding fields):
+    >
+    (press enter again to finish)
+
+```
+
 ## TWIG POUR AFFICHER UN MENU DIFFERENT SI LE VISITEUR EST CONNECTE
+
+    * OBTENIR LES INFOS SUR LE USER CONNECTE
+    https://symfony.com/doc/current/security.html#fetch-the-user-in-a-template
+
+    * OBTENIR LES DROITS SUR LE USER CONNECTE
+    https://symfony.com/doc/current/security.html#fetch-the-user-in-a-template
 
     DANS TWIG SYMFONY CREE UNE VARIABLE app 
     QU'ON PEUT UTILISER POUR RETROUVER L'UTILISATEUR CONNECTE
-    
+
 ```twig
 
         {% if app.user %}
@@ -99,3 +146,9 @@ CREER LES ENTITES ET LE CRUD (make:entity ET make:crud)
         {% endif %}
 
 ```
+
+## OBTENIR LE USER CONNECTE DANS PHP
+
+    https://symfony.com/doc/current/security.html#a-fetching-the-user-object
+
+    https://symfony.com/doc/current/security.html#b-fetching-the-user-from-a-service
