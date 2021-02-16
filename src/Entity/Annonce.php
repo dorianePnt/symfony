@@ -23,6 +23,11 @@ class Annonce
     private $titre;
 
     /**
+     * @ORM\Column(type="string", length=255)
+     */
+    private $slug;
+
+    /**
      * @ORM\Column(type="text")
      */
     private $contenu;
@@ -50,6 +55,18 @@ class Annonce
     public function setTitre(string $titre): self
     {
         $this->titre = $titre;
+
+        return $this;
+    }
+
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+
+    public function setSlug(string $slug): self
+    {
+        $this->slug = $slug;
 
         return $this;
     }
@@ -89,4 +106,5 @@ class Annonce
 
         return $this;
     }
+
 }
