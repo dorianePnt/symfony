@@ -1,23 +1,21 @@
 {% extends 'parent.html.twig' %}
 
 {% block titre1 %}
-<h1>Une seule annonce</h1>
+	<h1>Une seule annonce</h1>
 {% endblock %}
 
 {% block annonces %}
-<section class="container">
-    <div class="annonces">
-            <article>
-                <h3>{{ annonce.titre }}</h3>
-                <p>{{ annonce.contenu }}</p>
-                <div>{{ annonce.image }}</div>
-                <div>{{ annonce.datePublication ? annonce.datePublication|date('d/m/Y à H:i') : '' }}</div>
-            </article>
+	<section class="container">
+		<div class="annonces">
+			<article>
+				<h3>{{ annonce.titre }}</h3>
+				<p>{{ annonce.contenu }}</p>
+				{% if annonce.image %}
+					<div><img src="{{ asset('uploads/' ~ annonce.image) }}" class="img-fluid"></div>
+				{% endif %}
+				<div>{{ annonce.datePublication ? annonce.datePublication|date('d/m/Y à H:i') : '' }}</div>
+			</article>
 
-    </div>
-</section>
+		</div>
+	</section>
 {% endblock %}
-
-
-
-

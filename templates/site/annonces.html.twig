@@ -1,31 +1,32 @@
 {% extends 'parent.html.twig' %}
 
 {% block titre1 %}
-<h1>Liste des Annonces</h1>
+	<h1>Liste des Annonces</h1>
 {% endblock %}
 
 {% block annonces %}
-<section class="container">
-    <div class="annonces">
-        {% for annonce in annonces %}
-            <article>
-                
-                <h3><a href="{{ path('annonce', {'slug': annonce.slug, 'id': annonce.id}) }}">{{ annonce.titre }}</a></h3>
-                <div>publié par {{annonce.user.username}}</div>
-                <p>{{ annonce.contenu }}</p>
-                <div>{{ annonce.image }}</div>
-                <div>{{ annonce.datePublication ? annonce.datePublication|date('d/m/Y à H:i') : '' }}</div>
-            </article>
-        {% else %}
-            <article>
-                <div>aucune annonce n'est publiée</div>
-            </article>
-        {% endfor %}
+	<section class="container">
+		<div class="annonces">
+			{% for annonce in annonces %}
+				<article>
 
-    </div>
-</section>
+					<h3>
+						<a href="{{ path('annonce', {'slug': annonce.slug, 'id': annonce.id}) }}">{{ annonce.titre }}</a>
+					</h3>
+					<div>publié par
+						{{annonce.user.username}}</div>
+					<p>{{ annonce.contenu }}</p>
+					{% if annonce.image %}
+						<div><img src="{{ asset('uploads/' ~ annonce.image) }}" class="img-fluid"></div>
+					{% endif %}
+					<div>{{ annonce.datePublication ? annonce.datePublication|date('d/m/Y à H:i') : '' }}</div>
+				</article>
+			{% else %}
+				<article>
+					<div>aucune annonce n'est publiée</div>
+				</article>
+			{% endfor %}
+
+		</div>
+	</section>
 {% endblock %}
-
-
-
-
