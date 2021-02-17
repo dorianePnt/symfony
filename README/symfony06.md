@@ -183,3 +183,18 @@ https://prod.liveshare.vsengsaas.visualstudio.com/join?A1E824835DCCE2F189DA2203B
 <h3><a href="{{ path('annonce', {'slug': annonce.slug, 'id': annonce.id}) }}">{{ annonce.titre }}</a></h3>
 
 ```
+
+## FETCH EAGER
+
+    POUR AFFICHER L'AUTEUR DE L'ANNONCE, ON VA OPTIMISER LA REQUETE POUR FAIRE UNE JOINTURE
+    => AJOUTER UNE ANNOTATION fetch="EAGER"
+
+```php
+
+    /**
+     * @ORM\ManyToOne(targetEntity=User::class, inversedBy="annonces", fetch="EAGER")
+     * @ORM\JoinColumn(nullable=false)
+     */
+    private $user;
+
+```
