@@ -21,27 +21,23 @@
 		<h3>Liste de vos annonces</h3>
 
 		<section class="container">
-			<div class="annonces">
-				{% for annonce in annonces %}
-					<article>
+        <div class="annonces row">
+            {% for annonce in annonces %}
+                <article class="col-sm-4">
+                    <h3><a href="{{ path('annonce', {'slug': annonce.slug, 'id': annonce.id}) }}">{{ annonce.titre }}</a></h3>
+                    <div>publié par {{ annonce.user.username }}</div>
+                    <p>{{ annonce.contenu }}</p>
+                    <div>{{ annonce.image }}</div>
+                    <div>{{ annonce.datePublication ? annonce.datePublication|date('d/m/Y à H:i') : '' }}</div>
+                </article>
+            {% else %}
+                <article>
+                    <div>aucune annonce n'est publiée</div>
+                </article>
+            {% endfor %}
 
-						<h3>
-							<a href="{{ path('annonce', {'slug': annonce.slug, 'id': annonce.id}) }}">{{ annonce.titre }}</a>
-						</h3>
-						<div>publié par
-							{{annonce.user.username}}</div>
-						<p>{{ annonce.contenu }}</p>
-						<div>{{ annonce.image }}</div>
-						<div>{{ annonce.datePublication ? annonce.datePublication|date('d/m/Y à H:i') : '' }}</div>
-					</article>
-				{% else %}
-					<article>
-						<div>aucune annonce n'est publiée</div>
-					</article>
-				{% endfor %}
-
-			</div>
-		</section>
+        </div>
+    </section>
 
 	</section>
 {% endblock %}

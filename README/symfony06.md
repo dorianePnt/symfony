@@ -198,3 +198,17 @@ https://prod.liveshare.vsengsaas.visualstudio.com/join?A1E824835DCCE2F189DA2203B
     private $user;
 
 ```
+
+
+## EXO: AFFICHER LES ANNONCES DU USER CONNECTE DANS L'ESPACE MEMBRE
+
+    EN PLUS DU FORMULAIRE POUR PUBLIER UNE ANNONCE,
+    ON VEUT AFFICHER DANS UNE AUTRE SECTION, LA LISTE DES ANNONCES DE L'UTILISATEUR CONNECTE...
+
+    CHECKPOINT A 11H45...
+
+
+## UPLOAD DE FICHIERS DANS UN FORMULAIRE
+
+    * TUTO SYMFONY
+    https://symfony.com/doc/current/controller/upload_file.html
